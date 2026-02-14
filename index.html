@@ -2,131 +2,122 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <title>Pamuk Hasat Sensörü</title>
+  <title>Pamuk Hasat Sensörü - Teknofest 2026</title>
   <style>
-    body { 
-      background: url('https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
-      background-color: transparent;
-      background-blend-mode: overlay;
-      color: #fff; 
-      font-family: sans-serif; 
-      text-align: center; 
-      margin: 0; 
-      padding: 50px;
-      position: relative;
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: sans-serif;
+      color: white;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1508683554883-6f6f2a0a8a4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover fixed;
+      background-color: #0d1b0d;
+      min-height: 100vh;
     }
-
-    body::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(255,255,255,0.2);
-      animation: fadeOut 1s forwards;
-      pointer-events: none;
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px black;
     }
-
-    @keyframes fadeOut {
-      to { opacity: 0; }
+    .veri {
+      font-size: 1.6em;
+      background: rgba(0,0,0,0.6);
+      padding: 15px;
+      border-radius: 12px;
+      margin: 15px auto;
+      max-width: 500px;
     }
-
-    body::before {
-      content: "";
+    .uyari {
+      color: #ff4444;
+      font-size: 2.2em;
+      font-weight: bold;
+      margin: 40px 0 10px;
+      text-shadow: 0 0 10px red;
+    }
+    button {
+      background: #1a6b8c;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.3em;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s;
+    }
+    button:hover { background: #0f4a61; transform: scale(1.05); }
+    .iller {
+      margin-top: 50px;
+      font-size: 1.4em;
+    }
+    .iller ul { list-style: none; padding: 0; }
+    .iller li { margin: 10px 0; }
+    .donen-cark {
       position: fixed;
       top: 20px;
       right: 20px;
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Cotton-plant.jpg/120px-Cotton-plant.jpg') no-repeat center/cover;
       border-radius: 50%;
-      border: 3px solid #fff;
-      box-shadow: 0 0 15px rgba(255,255,255,0.7);
-      z-index: 10;
-      animation: dön 2s infinite linear;
+      border: 4px solid #fff;
+      box-shadow: 0 0 20px white;
+      animation: don 3s infinite linear;
+      z-index: 100;
     }
-
-    @keyframes dön {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-
-    .veri { 
-      font-size: 24px; 
-      margin: 20px 0; 
-      background: rgba(0,0,0,0.5);
-      padding: 10px;
-      border-radius: 10px;
-      display: inline-block;
-    }
-    .uyari { 
-      color: #ff5e5e; 
-      font-size: 32px; 
-      font-weight: bold; 
-      margin: 30px 0; 
-    }
-    .iller {
-      margin-top: 40px;
-      font-size: 20px;
-    }
-    .iller ul {
-      list-style: none;
-      padding: 0;
-    }
-    .iller li {
-      margin: 10px 0;
-    }
-    button { 
-      background: #2b5e7a; 
-      color: white; 
-      border: none; 
-      padding: 15px 30px; 
-      font-size: 18px; 
-      border-radius: 8px; 
-      cursor: pointer; 
-      margin-top: 20px;
-    }
-    footer {
-      margin-top: 60px;
-      font-size: 14px;
-    }
+    @keyframes don { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
+    footer { margin-top: 80px; font-size: 0.9em; opacity: 0.8; }
   </style>
 </head>
 <body>
 
+  <div class="donen-cark"></div>
+
   <h1>Pamuk Hasat Sensörü</h1>
-  
-  <div class="veri">Şanlıurfa Anlık: Yükleniyor...</div>
-  <div class="veri">Genel: Sıcaklık: 28°C | Nem: %42 | Rüzgar: 12 km/saat</div>
+
+  <div class="veri" id="hava">Şanlıurfa Anlık: Yükleniyor...</div>
 
   <div class="uyari">HASAT UYARISI</div>
-  <p>Pamuk çiçeği açtı. Üç gün içinde topla. Yoksa kalite düşer.</p>
-  <p>🌸➡️⏳</p>
+  <p>Pamuk çiçeği açtı. Üç gün içinde topla, yoksa kalite düşer!</p>
+  <p>🌸 → ⏳</p>
 
-  <button>Tamam, bildirdim</button>
+  <button id="bildirim">Tamam, bildirdim</button>
 
   <div class="iller">
     <h2>Pamuk Yetişen Başlıca İller</h2>
     <ul>
-      <li>🇹🇷 Şanlıurfa – %41 üretim</li>
-      <li>🇹🇷 Diyarbakır – %17</li>
-      <li>🇹🇷 Aydın – %11</li>
-      <li>🇹🇷 Hatay & Adana – %8</li>
+      <li>Şanlıurfa – %41 üretim</li>
+      <li>Diyarbakır – %17</li>
+      <li>Aydın – %11</li>
+      <li>Hatay & Adana – %8</li>
     </ul>
   </div>
 
-  <footer>
-    <small>Teknofest 2026 – Eymen Talha & Takım</small>
-  </footer>
+  <footer>Teknofest 2026 – Eymen Talha & Takım</footer>
 
   <script>
+    // Hava durumu API - gerçek zamanlı
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Sanliurfa,TR&appid=123dc6f0ebf28ca448f9043ed8f26f5b&units=metric&lang=tr')
-      .then(r => r.json())
-      .then(d => {
-        document.querySelector('.veri').innerHTML = 
-          `Şanlıurfa Anlık: ${d.main.temp}°C | Nem ${d.main.humidity}% | Rüzgar ${d.wind.speed} km/s`;
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('hava').innerHTML = 
+          `Şanlıurfa Anlık: ${Math.round(data.main.temp)}°C | Nem ${data.main.humidity}% | Rüzgar ${Math.round(data.wind.speed)} km/s`;
       })
-      .catch(e => {
-        document.querySelector('.veri').innerHTML = "Veri alınamadı... API biraz yavaş bugün.";
+      .catch(() => {
+        document.getElementById('hava').innerHTML = "Hava verisi alınamadı... biraz sonra dene.";
       });
+
+    // Bildirim butonu etkileşimi
+    document.getElementById('bildirim').onclick = function() {
+      this.innerHTML = "Bildirim Gönderildi!";
+      this.style.background = "#2e8b57";
+      this.disabled = true;
+      setTimeout(() => {
+        this.innerHTML = "Tamam, bildirdim";
+        this.style.background = "#1a6b8c";
+        this.disabled = false;
+      }, 3000);
+    };
   </script>
 
 </body>
