@@ -2,20 +2,45 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pamuk Hasat Sensörü</title>
   <style>
     body { 
+      margin: 0; padding: 50px 20px;
+      font-family: sans-serif; color: #fff;
+      text-align: center;
       background: url('https://images.unsplash.com/photo-1508683554883-6f6f2a0a8a4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover fixed;
-      
+      background-color: #0d1b0d;
     }
-    /* geri kalan tüm stil aynı, sadece arka plan değişti */
-    .veri { font-size: 24px; margin: 20px 0; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 10px; display: inline-block; }
-    .uyari { color: #ff5e5e; font-size: 32px; font-weight: bold; margin: 30px 0; }
+
+    .veri { 
+      font-size: 24px; margin: 20px 0; 
+      background: rgba(0,0,0,0.5); padding: 10px; 
+      border-radius: 10px; display: inline-block;
+    }
+    .uyari { 
+      color: #ff5e5e; font-size: 32px; 
+      font-weight: bold; margin: 30px 0; 
+    }
+    button { 
+      background: #2b5e7a; color: white; 
+      border: none; padding: 15px 30px; 
+      font-size: 18px; border-radius: 8px; 
+      cursor: pointer; margin-top: 20px;
+    }
     .iller { margin-top: 40px; font-size: 20px; }
     .iller ul { list-style: none; padding: 0; }
     .iller li { margin: 10px 0; }
-    button { background: #2b5e7a; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; margin-top: 20px; }
     footer { margin-top: 60px; font-size: 14px; }
+
+    /* TELEFON İÇİN */
+    @media (max-width: 600px) {
+      body { padding: 30px 15px; }
+      h1 { font-size: 1.8em; }
+      .veri { font-size: 1.2em; padding: 8px; }
+      .uyari { font-size: 1.6em; }
+      button { padding: 10px 20px; font-size: 1em; }
+    }
   </style>
 </head>
 <body>
