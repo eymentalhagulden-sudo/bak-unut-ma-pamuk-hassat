@@ -120,6 +120,20 @@
       }, 3000);
     };
   </script>
-
+<script>
+  document.querySelector('.veri').innerHTML = "Şanlıurfa verisi yükleniyor...";
+  
+  setTimeout(() => {
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=Sanliurfa,TR&appid=123dc6f0ebf28ca448f9043ed8f26f5b&units=metric&lang=tr')
+      .then(r => r.json())
+      .then(d => {
+        document.querySelector('.veri').innerHTML = 
+          `Şanlıurfa Anlık: ${Math.round(d.main.temp)}°C | Nem %${d.main.humidity} | Rüzgar ${Math.round(d.wind.speed)} km/s`;
+      })
+      .catch(() => {
+        document.querySelector('.veri').innerHTML = "API biraz nazlandı, ama yakında gelir.";
+      });
+  }, 3000); // 3 saniye bekle, sonra çek
+</script>
 </body>
 </html>
